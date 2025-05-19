@@ -26,7 +26,8 @@
       <tbody>
         <tr v-for="(k, i) in Object.keys(result)" :key="i">
           <td>{{ k }}</td>
-          <td>{{ result[k] }}</td>
+          <td :class="{ 'bg-negative': result[k] == '-', 'text-white': result[k] == '-' }">{{ result[k]
+            == '-' ? '成績證明無效' :result[k]}}</td>
         </tr>
       </tbody>
     </q-markup-table>
