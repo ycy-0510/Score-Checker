@@ -30,6 +30,17 @@ export default defineRouter(function (/* { store, ssrContext } */) {
     // quasar.conf.js -> build -> publicPath
     history: createHistory(process.env.VUE_ROUTER_BASE),
   });
-
+  Router.beforeEach((to, from, next) => {
+    const token = localStorage.getItem('token')
+    const isAdmin = token && token.startsWith('admin_') // 管理者 token 開頭
+  
+    if (to.meta.requiresAuth && !token) {
+      next('/')
+    } else if (to.meta.requiresAdmin && !isAdmin) {
+      next('/')
+    } else {
+      next()
+    }
+  })
   return Router;
 });
