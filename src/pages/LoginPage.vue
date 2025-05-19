@@ -1,6 +1,6 @@
 <template>
   <div class="q-pa-md">
-    <q-input v-model="email" label="Email" />
+    <q-input v-model="email" label="Email (ck帳號)" />
     <q-btn label="傳送驗證碼" @click="sendCode" class="q-mt-sm" />
     <q-input v-model="code" label="驗證碼" class="q-mt-md" />
     <q-btn label="登入" @click="verifyCode" class="q-mt-sm" />
